@@ -8,4 +8,12 @@ export interface Hotel {
   contents: string
   comment: string
   images: string[]
+  events?: {
+    name: string
+    promoEndTime?: string
+    tagThemeStyle: {
+      backgroundColor: string
+      fontColor: string
+    }
+  }
 }

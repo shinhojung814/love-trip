@@ -22,8 +22,8 @@ function HotelListPage() {
         <ul>
           {hotels?.map((hotel, idx) => {
             return (
-              <Fragment>
-                <Hotel key={hotel.id} hotel={hotel} />
+              <Fragment key={hotel.id}>
+                <Hotel hotel={hotel} />
                 {hotels.length - 1 === idx ? null : (
                   <Spacing
                     direction="vertical"

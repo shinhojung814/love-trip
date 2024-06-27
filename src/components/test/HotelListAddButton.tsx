@@ -21,7 +21,7 @@ function HotelListAddButton() {
         price: getRandomValue(130000, 200000),
         starRating: getRandomValue(1, 5),
         ...HOTEL,
-        ...[EVENTS[index] != null && { events: EVENTS[index] }],
+        ...(EVENTS[index] != null && { events: EVENTS[index] }),
       }
     })
 
