@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { css } from '@emotion/react'
 import { differenceInMilliseconds, parseISO } from 'date-fns'
 
-import { Hotel as IHotel } from '@models/hotels'
+import { Hotel } from '@models/hotels'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Spacing from '@shared/Spacing'
@@ -12,7 +12,7 @@ import Tag from '@shared/Tag'
 import addDelimiter from '@utils/addDelimiter'
 import formatTime from '@utils/formatTime'
 
-function Hotel({ hotel }: { hotel: IHotel }) {
+function HotelItem({ hotel }: { hotel: Hotel }) {
   const [remainedTime, setRemainedTime] = useState(0)
 
   useEffect(() => {
@@ -108,4 +108,4 @@ const imageStyles = css`
   object-fit: cover;
 `
 
-export default Hotel
+export default HotelItem
