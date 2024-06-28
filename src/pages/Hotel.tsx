@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import useHotel from '@components/hotel/hooks/useHotel'
 import Top from '@shared/Top'
 import Carousel from '@components/hotel/Carousel'
+import Rooms from '@components/hotel/Rooms'
+import Contents from '@components/hotel/Contents'
 
 function HotelPage() {
   const { id } = useParams() as { id: string }
@@ -13,12 +15,14 @@ function HotelPage() {
     return <div>호텔 데이터를 불러오는 중</div>
   }
 
-  const { name, comment, images } = data
+  const { name, comment, images, contents } = data
 
   return (
     <div>
       <Top title={name} subtitle={comment} />
       <Carousel images={images} />
+      <Rooms hotelId={id} />
+      <Contents contents={contents} />
     </div>
   )
 }
