@@ -6,6 +6,7 @@ import Carousel from '@components/hotel/Carousel'
 import Rooms from '@components/hotel/Rooms'
 import Contents from '@components/hotel/Contents'
 import Map from '@components/hotel/Map'
+import RecommendHotels from '@components/hotel/RecommendHotels'
 
 function HotelPage() {
   const { id } = useParams() as { id: string }
@@ -16,7 +17,7 @@ function HotelPage() {
     return <div>호텔 데이터를 불러오는 중</div>
   }
 
-  const { name, comment, images, contents, location } = data
+  const { name, comment, images, contents, location, recommendHotels } = data
 
   return (
     <div>
@@ -25,6 +26,7 @@ function HotelPage() {
       <Rooms hotelId={id} />
       <Contents contents={contents} />
       <Map location={location} />
+      <RecommendHotels recommendHotels={recommendHotels} />
     </div>
   )
 }

@@ -28,8 +28,6 @@ function Rooms({ hotelId }: { hotelId: string }) {
           const hurry = room.availableCount === 1 || room.availableCount === 2
           const soldOut = room.availableCount === 0
 
-          console.log('available', room.availableCount)
-
           return (
             <ListRow
               key={room.id}
