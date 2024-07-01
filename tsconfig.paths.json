@@ -12,7 +12,8 @@
       "@models/*": ["src/models/*"],
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"],
-      "@store/*": ["src/store/*"]
+      "@store/*": ["src/store/*"],
+      "@contexts/*": ["src/contexts/*"]
     }
   }
 }

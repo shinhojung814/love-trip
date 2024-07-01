@@ -26,23 +26,22 @@ function RecommendHotels({ recommendHotels }: { recommendHotels: string[] }) {
       <Spacing direction="vertical" size={16} />
       <ul>
         {hotelList.map((hotel) => (
-          <li key={hotel.id}>
-            <ListRow
-              left={
-                <img
-                  src={hotel.mainImageUrl}
-                  alt={hotel.name}
-                  css={imageStyles}
-                />
-              }
-              contents={
-                <ListRow.Texts
-                  title={hotel.name}
-                  subtitle={`${addDelimiter(hotel.price)}원`}
-                />
-              }
-            />
-          </li>
+          <ListRow
+            key={hotel.id}
+            left={
+              <img
+                src={hotel.mainImageUrl}
+                alt={hotel.name}
+                css={imageStyles}
+              />
+            }
+            contents={
+              <ListRow.Texts
+                title={hotel.name}
+                subtitle={`${addDelimiter(hotel.price)}원`}
+              />
+            }
+          />
         ))}
       </ul>
       {data.length > 3 && showMoreHotels === false ? (
