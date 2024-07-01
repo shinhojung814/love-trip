@@ -4,6 +4,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 
 import { QueryClientProvider, QueryClient } from 'react-query'
+import { RecoilRoot } from 'recoil'
 
 import { Global } from '@emotion/react'
 import globalStyles from '@styles/globalStyles'
@@ -20,9 +21,11 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <Global styles={globalStyles} />
-    <QueryClientProvider client={client}>
-      <App />
-    </QueryClientProvider>
+    <RecoilRoot>
+      <QueryClientProvider client={client}>
+        <App />
+      </QueryClientProvider>
+    </RecoilRoot>
   </React.StrictMode>,
 )
 

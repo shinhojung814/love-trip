@@ -3,25 +3,34 @@ import { Link, useLocation } from 'react-router-dom'
 import { css } from '@emotion/react'
 
 import Flex from '@shared/Flex'
+import Text from '@shared/Text'
 import Button from '@shared/Button'
 // import MyImage from '@components/my/MyImage'
 import { colors } from '@styles/colorPalette'
-// import useUser from '@hooks/auth/useUser'
+import useUser from '@hooks/auth/useUser'
 
 function Navbar() {
   const location = useLocation()
   const showSignButton =
     ['/signin', '/signup'].includes(location.pathname) === false
 
-  // const user = useUser()
-  const user = null
+  const user = useUser()
 
   const renderButton = useCallback(() => {
     if (user != null) {
       return (
         <Link to="/my">
           {/* <MyImage size={40} /> */}
-          <img src="" alt="" />
+          <img
+            src={
+              user.photoURL ??
+              'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png'
+            }
+            alt="profile"
+            width={40}
+            height={40}
+            style={{ borderRadius: '100%' }}
+          />
         </Link>
       )
     }
@@ -40,7 +49,8 @@ function Navbar() {
   return (
     <Flex justify="space-between" align="center" css={navbarContainerStyles}>
       <Link to="/">
-        <IconHome />
+        {/* <IconHome /> */}
+        <Text bold={true}>LOVE TRIP</Text>
       </Link>
       {renderButton()}
     </Flex>
