@@ -5,6 +5,7 @@ import { css } from '@emotion/react'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Button from '@shared/Button'
+import Spacing from '@shared/Spacing'
 // import MyImage from '@components/my/MyImage'
 import { colors } from '@styles/colorPalette'
 import useUser from '@hooks/auth/useUser'
@@ -19,19 +20,31 @@ function Navbar() {
   const renderButton = useCallback(() => {
     if (user != null) {
       return (
-        <Link to="/my">
-          {/* <MyImage size={40} /> */}
-          <img
-            src={
-              user.photoURL ??
-              'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png'
-            }
-            alt="profile"
-            width={40}
-            height={40}
-            style={{ borderRadius: '100%' }}
-          />
-        </Link>
+        <Flex align="center">
+          <Link to="/my">
+            {/* <MyImage size={40} /> */}
+            <img
+              src={
+                user.photoURL ??
+                'https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user-256.png'
+              }
+              alt="profile"
+              width={40}
+              height={40}
+              style={{ borderRadius: '100%' }}
+            />
+          </Link>
+          <Spacing direction="horizontal" size={12} />
+          <Link to="/settings">
+            <img
+              src="https://cdn1.iconfinder.com/data/icons/ionicons-outline-vol-2/512/settings-outline-256.png"
+              alt="settings"
+              width={40}
+              height={40}
+              style={{ borderRadius: '100%' }}
+            />
+          </Link>
+        </Flex>
       )
     }
 
