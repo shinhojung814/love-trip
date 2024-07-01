@@ -4,7 +4,7 @@ import { doc, collection, onSnapshot } from 'firebase/firestore'
 
 import { store } from '@remote/firebase'
 import { getRooms } from '@remote/room'
-import { COLLECTIONS } from '@/constants'
+import { COLLECTIONS } from '@constants/index'
 import { Room } from '@models/room'
 
 function useRooms({ hotelId }: { hotelId: string }) {

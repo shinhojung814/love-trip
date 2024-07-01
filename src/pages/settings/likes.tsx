@@ -27,7 +27,7 @@ function LikesPage() {
   }
 
   return (
-    <div>
+    <div style={{ padding: '24px 12px' }}>
       <DragDropContext onDragEnd={handleDragEnd}>
         <StrictModeDroppable droppableId="likes">
           {(droppableProps) => (

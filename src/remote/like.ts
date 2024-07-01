@@ -12,7 +12,7 @@ import {
 } from 'firebase/firestore'
 
 import { store } from '@remote/firebase'
-import { COLLECTIONS } from '@/constants'
+import { COLLECTIONS } from '@constants/index'
 import { Hotel } from '@models/hotels'
 import { Like } from '@models/like'
 

@@ -5,7 +5,7 @@ import { collection, doc, getDoc, setDoc } from 'firebase/firestore'
 import { FirebaseError } from 'firebase/app'
 
 import { auth, store } from '@remote/firebase'
-import { COLLECTIONS } from '@/constants'
+import { COLLECTIONS } from '@constants/index'
 
 function useGoogleSignin() {
   const navigate = useNavigate()
@@ -27,7 +27,7 @@ function useGoogleSignin() {
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
-          photoUrl: user.photoURL,
+          photoURL: user.photoURL,
         }
 
         await setDoc(
