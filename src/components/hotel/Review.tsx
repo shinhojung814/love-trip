@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { ChangeEvent, useCallback, useState } from 'react'
 import { format } from 'date-fns'
 
 import Flex from '@shared/Flex'
@@ -11,9 +11,9 @@ import useUser from '@hooks/auth/useUser'
 import useReview from '@components/hotel/hooks/useReview'
 
 function Review({ hotelId }: { hotelId: string }) {
-  const { data: reviews, isLoading } = useReview({ hotelId })
-
   const user = useUser()
+  const { data: reviews, isLoading, write, remove } = useReview({ hotelId })
+  const [text, setText] = useState('')
 
   const reviewRows = useCallback(() => {
     if (reviews?.length === 0) {
@@ -35,6 +35,7 @@ function Review({ hotelId }: { hotelId: string }) {
       <ul>
         {reviews?.map((review) => (
           <ListRow
+            key={review.id}
             left={
               review.user.photoURL != null ? (
                 <img
@@ -51,12 +52,26 @@ function Review({ hotelId }: { hotelId: string }) {
                 subtitle={format(review.createdAt, 'yyyy-MM-dd')}
               />
             }
-            right={review.userId === user?.uid ? <Button>삭제</Button> : null}
+            right={
+              review.userId === user?.uid ? (
+                <Button
+                  onClick={() =>
+                    remove({ hotelId: review.hotelId, reviewId: review.id })
+                  }
+                >
+                  삭제
+                </Button>
+              ) : null
+            }
           />
         ))}
       </ul>
     )
   }, [user, reviews])
+
+  const handleTextChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value)
+  }, [])
 
   if (isLoading === true) {
     return null
@@ -71,10 +86,21 @@ function Review({ hotelId }: { hotelId: string }) {
       {reviewRows()}
       {user != null ? (
         <div style={{ padding: '0 24px' }}>
-          <TextField />
+          <TextField value={text} onChange={handleTextChange} />
           <Spacing direction="vertical" size={12} />
           <Flex justify="flex-end">
-            <Button disabled={true}>작성</Button>
+            <Button
+              disabled={text === ''}
+              onClick={async () => {
+                const success = await write(text)
+
+                if (success === true) {
+                  setText('')
+                }
+              }}
+            >
+              작성
+            </Button>
           </Flex>
         </div>
       ) : null}
