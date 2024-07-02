@@ -5,6 +5,8 @@ import HotelPage from '@pages/Hotel'
 import TestPage from '@pages/Test'
 import SigninPage from '@pages/Signin'
 import MyPage from '@pages/My'
+import SchedulePage from '@pages/Schedule'
+import ReservationPage from '@pages/Reservation'
 import SettingsPage from '@pages/settings/index'
 import LikesPage from '@pages/settings/likes'
 
@@ -47,6 +49,22 @@ function App() {
             element={
               <PrivateRoute>
                 <LikesPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/schedule"
+            element={
+              <PrivateRoute>
+                <SchedulePage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/reservation"
+            element={
+              <PrivateRoute>
+                <ReservationPage />
               </PrivateRoute>
             }
           />

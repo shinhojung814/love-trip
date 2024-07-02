@@ -1,5 +1,7 @@
+import { useNavigate } from 'react-router-dom'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import qs from 'qs'
 
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
@@ -7,11 +9,16 @@ import ListRow from '@shared/ListRow'
 import Tag from '@shared/Tag'
 import Button from '@shared/Button'
 import Spacing from '@shared/Spacing'
-import useRooms from '@components/hotel/hooks/useRooms'
+import useUser from '@hooks/auth/useUser'
 import addDelimiter from '@utils/addDelimiter'
+import useRooms from '@components/hotel/hooks/useRooms'
+import { useAlertContext } from '@contexts/AlertContext'
 
 function Rooms({ hotelId }: { hotelId: string }) {
+  const user = useUser()
+  const navigate = useNavigate()
   const { data } = useRooms({ hotelId })
+  const { open } = useAlertContext()
 
   return (
     <Container>
@@ -27,6 +34,16 @@ function Rooms({ hotelId }: { hotelId: string }) {
         {data?.map((room) => {
           const hurry = room.availableCount === 1 || room.availableCount === 2
           const soldOut = room.availableCount === 0
+
+          const params = qs.stringify(
+            {
+              hotelId: hotelId,
+              roomId: room.id,
+            },
+            {
+              addQueryPrefix: true,
+            },
+          )
 
           return (
             <ListRow
@@ -57,7 +74,24 @@ function Rooms({ hotelId }: { hotelId: string }) {
                 />
               }
               right={
-                <Button size="medium" disabled={soldOut}>
+                <Button
+                  size="medium"
+                  disabled={soldOut}
+                  onClick={() => {
+                    if (user == null) {
+                      open({
+                        title: '로그인이 필요한 기능입니다.',
+                        onButtonClick: () => {
+                          navigate('/signin')
+                        },
+                      })
+
+                      return
+                    }
+
+                    navigate(`/schedule${params}`)
+                  }}
+                >
                   {soldOut === true ? '매진' : '선택'}
                 </Button>
               }

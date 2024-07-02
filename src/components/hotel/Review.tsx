@@ -67,7 +67,7 @@ function Review({ hotelId }: { hotelId: string }) {
         ))}
       </ul>
     )
-  }, [user, reviews])
+  }, [user, reviews, remove])
 
   const handleTextChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value)
