@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { Fragment, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 
 import Text from '@shared/Text'
@@ -8,16 +8,22 @@ import TextField from '@shared/TextField'
 import FixedBottomButton from '@shared/FixedBottomButton'
 import { Hotel, ReservationForm } from '@models/hotel'
 
+type FormData = {
+  [key: string]: string
+}
+
 function Form({
   forms,
   onSubmit,
   buttonLabel,
 }: {
   forms: Hotel['forms']
-  onSubmit: () => void
+  onSubmit: (formValues: FormData) => void
   buttonLabel: string
 }) {
-  const { register, formState, handleSubmit } = useForm({ mode: 'onBlur' })
+  const { register, formState, handleSubmit } = useForm<FormData>({
+    mode: 'onBlur',
+  })
 
   const component = useCallback(
     (form: ReservationForm) => {
@@ -64,10 +70,10 @@ function Form({
       <form>
         {forms.map((form) => {
           return (
-            <div key={form.id}>
+            <Fragment key={form.id}>
               {component(form)}
               <Spacing direction="vertical" size={12} />
-            </div>
+            </Fragment>
           )
         })}
       </form>
@@ -81,11 +87,11 @@ const VALIDATION_MESSAGE_MAP: {
   [key: string]: { value: RegExp; message: string }
 } = {
   name: {
-    value: /^[가-힣]+&/,
+    value: /^[가-힣]+$/,
     message: '입력한 이름을 확인해주세요.',
   },
   email: {
-    value: /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    value: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     message: '입력한 이메일을 확인해주세요',
   },
   phone: {
