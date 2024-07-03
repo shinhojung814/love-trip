@@ -13,7 +13,7 @@ import {
 
 import { store } from '@remote/firebase'
 import { COLLECTIONS } from '@constants/index'
-import { Hotel } from '@models/hotels'
+import { Hotel } from '@/models/hotel'
 import { Room } from '@models/room'
 
 export async function getHotels(pageParams?: QuerySnapshot<Hotel>) {

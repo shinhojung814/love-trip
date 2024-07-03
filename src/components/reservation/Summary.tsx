@@ -41,7 +41,7 @@ function Summary({
           {Object.keys(room.basicInfo).map((key) => {
             if (key in INFO_LABEL_MAP) {
               return (
-                <Flex as="li" justify="space-between">
+                <Flex key={key} as="li" justify="space-between">
                   <Text typography="t6" color="gray600">
                     {INFO_LABEL_MAP[key as keyof typeof INFO_LABEL_MAP]}
                   </Text>

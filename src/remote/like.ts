@@ -13,7 +13,7 @@ import {
 
 import { store } from '@remote/firebase'
 import { COLLECTIONS } from '@constants/index'
-import { Hotel } from '@models/hotels'
+import { Hotel } from '@/models/hotel'
 import { Like } from '@models/like'
 
 export async function getLikes({ userId }: { userId: string }) {

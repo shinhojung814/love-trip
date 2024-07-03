@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from 'react-query'
 
 import { getLikes, toggleLike } from '@remote/like'
 import useUser from '@hooks/auth/useUser'
-import { Hotel } from '@models/hotels'
+import { Hotel } from '@/models/hotel'
 import { useAlertContext } from '@contexts/AlertContext'
 
 function useLike() {

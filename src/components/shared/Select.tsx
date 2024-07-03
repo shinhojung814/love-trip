@@ -20,9 +20,8 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 const BaseSelect = styled.select`
   height: 52px;
   padding: 0 16px;
-  background-color: ${colors.gray};
-  border: none;
-  border-radius: 12px;
+  border: solid 1px ${colors.gray};
+  border-radius: 6px;
   cursor: pointer;
 
   &:required:invalid {

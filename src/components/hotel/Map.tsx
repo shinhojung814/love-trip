@@ -2,7 +2,7 @@ import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
 
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
-import { Hotel } from '@models/hotels'
+import { Hotel } from '@/models/hotel'
 
 function Map({ location }: { location: Hotel['location'] }) {
   const {

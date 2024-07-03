@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { css } from '@emotion/react'
 import { differenceInMilliseconds, parseISO } from 'date-fns'
 
-import { Hotel } from '@models/hotels'
+import { Hotel } from '@/models/hotel'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
 import Spacing from '@shared/Spacing'

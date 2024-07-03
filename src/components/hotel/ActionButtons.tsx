@@ -6,7 +6,7 @@ import Text from '@shared/Text'
 import Spacing from '@shared/Spacing'
 import useShare from '@hooks/useShare'
 import useLike from '@hooks/like/useLike'
-import { Hotel } from '@models/hotels'
+import { Hotel } from '@/models/hotel'
 
 function ActionButtons({ hotel }: { hotel: Hotel }) {
   const { name, comment, mainImageUrl } = hotel
