@@ -49,7 +49,7 @@ function SchedulePage() {
     : '예약 날짜를 선택해주세요.'
 
   return (
-    <div>
+    <div style={{ padding: '12px 48px' }}>
       <RangePicker
         startDate={selectedDate.startDate}
         endDate={selectedDate.endDate}

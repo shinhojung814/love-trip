@@ -9,6 +9,7 @@ import ListRow from '@shared/ListRow'
 import Tag from '@shared/Tag'
 import Button from '@shared/Button'
 import Spacing from '@shared/Spacing'
+import withSuspense from '@shared/hocs/withSuspense'
 import useUser from '@hooks/auth/useUser'
 import addDelimiter from '@utils/addDelimiter'
 import useRooms from '@components/hotel/hooks/useRooms'
@@ -32,7 +33,7 @@ function Rooms({ hotelId }: { hotelId: string }) {
       </Header>
       <ul>
         {data?.map((room) => {
-          const hurry = room.availableCount === 1 || room.availableCount === 2
+          const hurry = room.availableCount === 1
           const soldOut = room.availableCount === 0
 
           const params = qs.stringify(
@@ -119,4 +120,6 @@ const imageStyles = css`
   border-radius: 4px;
 `
 
-export default Rooms
+export default withSuspense(Rooms, {
+  fallback: <div>객실 정보를 불러오는 중</div>,
+})

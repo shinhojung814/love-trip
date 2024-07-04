@@ -4,9 +4,9 @@ import {
   Droppable,
   Draggable,
   DroppableProps,
-  // DraggableProps,
   DropResult,
 } from 'react-beautiful-dnd'
+import { Virtuoso } from 'react-virtuoso'
 
 import ListRow from '@shared/ListRow'
 import FixedBottomButton from '@shared/FixedBottomButton'
@@ -27,7 +27,7 @@ function LikesPage() {
   }
 
   return (
-    <div style={{ padding: '24px 12px' }}>
+    <div style={{ padding: '24px 12px', marginBottom: '100px' }}>
       <DragDropContext onDragEnd={handleDragEnd}>
         <StrictModeDroppable droppableId="likes">
           {(droppableProps) => (
@@ -35,29 +35,38 @@ function LikesPage() {
               ref={droppableProps.innerRef}
               {...droppableProps.droppableProps}
             >
-              {data?.map((like, index) => {
-                return (
-                  <Draggable key={like.id} draggableId={like.id} index={index}>
-                    {(draggableProps) => (
-                      <li
-                        ref={draggableProps.innerRef}
-                        {...draggableProps.draggableProps}
-                        {...draggableProps.dragHandleProps}
-                      >
-                        <ListRow
-                          as="div"
-                          contents={
-                            <ListRow.Texts
-                              title={like.order}
-                              subtitle={like.hotelName}
-                            />
-                          }
-                        />
-                      </li>
-                    )}
-                  </Draggable>
-                )
-              })}
+              <Virtuoso
+                data={data}
+                useWindowScroll
+                increaseViewportBy={0}
+                itemContent={(index, like) => {
+                  return (
+                    <Draggable
+                      key={like.id}
+                      draggableId={like.id}
+                      index={index}
+                    >
+                      {(draggableProps) => (
+                        <li
+                          ref={draggableProps.innerRef}
+                          {...draggableProps.draggableProps}
+                          {...draggableProps.dragHandleProps}
+                        >
+                          <ListRow
+                            as="div"
+                            contents={
+                              <ListRow.Texts
+                                title={like.order}
+                                subtitle={like.hotelName}
+                              />
+                            }
+                          />
+                        </li>
+                      )}
+                    </Draggable>
+                  )
+                }}
+              />
             </ul>
           )}
         </StrictModeDroppable>

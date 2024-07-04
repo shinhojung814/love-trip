@@ -8,7 +8,6 @@ import Form from '@components/reservation/Form'
 import useReservation from '@components/reservation/hooks/useReservation'
 import addDelimiter from '@utils/addDelimiter'
 import useUser from '@hooks/auth/useUser'
-import { start } from 'repl'
 
 function ReservationPage() {
   const navigate = useNavigate()
@@ -68,7 +67,7 @@ function ReservationPage() {
   const buttonLabel = `${nights}박 ${addDelimiter(room.price * Number(nights))}원 예약하기`
 
   return (
-    <div>
+    <div style={{ padding: '0 48px' }}>
       <Summary
         hotelName={hotel.name}
         room={room}

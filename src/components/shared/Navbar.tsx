@@ -21,7 +21,6 @@ function Navbar() {
       return (
         <Flex align="center">
           <Link to="/my">
-            {/* <MyImage size={40} /> */}
             <img
               src={
                 user.photoURL ??
@@ -61,7 +60,7 @@ function Navbar() {
   return (
     <Flex justify="space-between" align="center" css={navbarContainerStyles}>
       <Link to="/">
-        <Text bold={true}>LOVE TRIP</Text>
+        <Text bold={true}>LoveTrip</Text>
       </Link>
       {renderButton()}
     </Flex>

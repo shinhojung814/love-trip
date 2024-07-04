@@ -91,7 +91,7 @@ const VALIDATION_MESSAGE_MAP: {
     message: '입력한 이름을 확인해주세요.',
   },
   email: {
-    value: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    value: /^[a-zA-Z0-9+-.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     message: '입력한 이메일을 확인해주세요',
   },
   phone: {

@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import styled from '@emotion/styled'
 import qs from 'qs'
 
 import Flex from '@shared/Flex'
@@ -16,13 +17,13 @@ function ReservationDonePage() {
   }
 
   return (
-    <div>
+    <Container>
       <Flex direction="column" align="center">
         <img
           src="https://cdn4.iconfinder.com/data/icons/general-office/91/General_Office_31-512.png"
           alt="reservation"
-          width={120}
-          height={120}
+          width={360}
+          height={360}
         />
         <Spacing direction="vertical" size={60} />
         <Text typography="t4" bold={true}>
@@ -31,7 +32,8 @@ function ReservationDonePage() {
         <Spacing direction="vertical" size={12} />
         <Text>예약이 완료되었습니다.</Text>
       </Flex>
-      <div style={{ padding: 24 }}>
+      <Spacing direction="vertical" size={36} />
+      <div>
         <Button.Group>
           <Button onClick={() => navigate('/')}>홈으로</Button>
           <Button onClick={() => navigate('/reservation/list')}>
@@ -39,8 +41,15 @@ function ReservationDonePage() {
           </Button>
         </Button.Group>
       </div>
-    </div>
+    </Container>
   )
 }
+
+const Container = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
 
 export default ReservationDonePage
