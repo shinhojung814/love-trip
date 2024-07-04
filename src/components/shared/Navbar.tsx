@@ -70,6 +70,7 @@ function Navbar() {
 const navbarContainerStyles = css`
   position: sticky;
   top: 0;
+  height: 44px;
   padding: 10px 24px;
   border-bottom: solid 1px ${colors.gray100};
   background-color: ${colors.white};
