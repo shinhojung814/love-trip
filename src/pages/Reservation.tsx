@@ -48,6 +48,8 @@ function ReservationPage() {
 
   const { hotel, room } = data
 
+  console.log('data', data)
+
   const handleSubmit = async (formValues: { [key: string]: string }) => {
     const newReservation = {
       userId: user?.uid as string,
