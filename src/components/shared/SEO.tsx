@@ -12,7 +12,7 @@ function SEO({ title, description, image }: SEOProps) {
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content="LoveTrip" />
+      <meta property="og:title" content={title} />
       <meta property="og:image" content={image} />
       <meta property="og:image:width" content="260" />
       <meta property="og:image:height" content="260" />
