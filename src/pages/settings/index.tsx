@@ -11,7 +11,10 @@ function SettingsPage() {
             <ListRow
               as="div"
               contents={
-                <ListRow.Texts title="좋아요" subtitle="담아둔 호텔 순서 변경" />
+                <ListRow.Texts
+                  title="좋아요"
+                  subtitle="담아둔 호텔 순서 변경"
+                />
               }
               withArrow={true}
             />
