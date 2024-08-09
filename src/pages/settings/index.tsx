@@ -14,9 +14,9 @@ function SettingsPage() {
                 <ListRow.Texts
                   title="좋아요"
                   subtitle="담아둔 호텔 순서 변경"
-                  />
-                }
-                withArrow={true}
+                />
+              }
+              withArrow={true}
             />
           </Link>
         </li>
@@ -25,12 +25,9 @@ function SettingsPage() {
             <ListRow
               as="div"
               contents={
-                <ListRow.Texts
-                  title="예약 목록"
-                  subtitle="예약한 일정 확인"
-                  />
-                }
-                withArrow={true}
+                <ListRow.Texts title="예약 목록" subtitle="예약한 일정 확인" />
+              }
+              withArrow={true}
             />
           </Link>
         </li>
